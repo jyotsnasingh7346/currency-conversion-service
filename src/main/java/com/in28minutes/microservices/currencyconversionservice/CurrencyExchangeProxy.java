@@ -9,15 +9,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface CurrencyExchangeProxy {
 	
 		/*
-		 * SPRING CLOUD introduces FEIGN REST CLIENT, that makes the job easier, with less LOC. 
+		 * SPRING CLOUD introduces a declarative FEIGN REST CLIENT, that makes the job easier, with less LOC. 
+		 *  
+		 * When using Feign, the developer has only to define the interfaces and annotate them accordingly. 
+		 * The actual web client implementation is then provided by Spring at runtime.
 		 * 
 		 * Step 01 : Start by including FEIGN dependency in the POM file. 
-		 * Step 02 : Make a proxy (new interface - CurrencyExchangeProxy) 
+		 * Step 02 : Make a proxy for exchange (client)(new interface - CurrencyExchangeProxy), in currency-conversion-service.
 		 * Step 03 : @EnableFeignClients for CurrencyConversionServiceApplication 
 		 * Step 04 : In the Proxy class, @FeignClient(name="application-name", url="localhost:port on which 
 		 * the desired application API is running") in the new interface CurrencyExchangeProxy.
 		 * Step 05 : Copy the @GetMapping method API definition, 
-		 * which needs to be called by our API, from the desired application and put it in the new interface.
+		 * which calls by our API, from the desired application and put it in the new interface.
 		 * Step 06 : Launch both of the applications and hit our FEIGN API
 		 */
 	
@@ -26,7 +29,7 @@ public interface CurrencyExchangeProxy {
 		
 	/*
 	 * However, there is still one problem. The URL.
-	 * The URL is being hardcoded in the cide and its not the most optimal way to code.
+	 * The URL is being hardcoded here and its not the most optimal way to code.
 	 * Suppose, there are multiple instances running on multiple ports, you would then need to 
 	 * add all the urls. Everytime there is a new instance, you would have to add in the code, which is tedious.
 	 * 

@@ -23,9 +23,12 @@ public class CurrencyConversionController {
 		 * 
 		 * Here, we will call currency-exchange service from inside the call of
 		 * currency-conversion service. For this, we need a RestTemplate object & a
-		 * ResponseEntity object. The RestTemplate will call the currency-exchange API
-		 * and the ResponseEntity will store the response of the API call. The response
-		 * body in the ResponseEntity object can be stored in a currencyConversion
+		 * ResponseEntity object. 
+		 * 
+		 * The RestTemplate will call the currency-exchange API
+		 * and the ResponseEntity will store the response of the API call. 
+		 * 
+		 * The response body in the ResponseEntity object can be stored in a currencyConversion
 		 * object.
 		 * 
 		 * This currencyConversion object can then be returned as a response of this
